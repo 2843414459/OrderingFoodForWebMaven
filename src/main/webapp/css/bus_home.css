@@ -1,0 +1,23 @@
+
+table {
+    width: 50%;
+    margin: 10px auto;
+    border: 5px solid green;
+    /*color: white;*/
+}
+
+th, td {
+    border: 1px solid black;
+}
+
+.bgc_red {
+    background-color: red;
+}
+
+form{
+    width: 50%;
+    margin: 10px auto;
+}
+.bgc_pink {
+    background-color: green;
+}
