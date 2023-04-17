@@ -261,6 +261,7 @@ public abstract class BaseDao<T> {
                 }
                 list.add(map);
             }
+
 //            resultSet.next();//resultSet 指针下移一次
         } catch (SQLException sqlException) {
             sqlException.printStackTrace();
