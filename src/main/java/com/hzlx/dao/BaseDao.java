@@ -268,6 +268,7 @@ public abstract class BaseDao<T> {
         } finally {
             if (preparedStatement != null) {
                 try {
+                    
                     preparedStatement.close();
                 } catch (SQLException sqlException) {
                     sqlException.printStackTrace();
