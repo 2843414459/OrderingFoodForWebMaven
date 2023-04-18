@@ -96,7 +96,7 @@ public class FoodInfoDaoImpl extends BaseDao<FoodInfo> implements FoodInfoDao {
 
     @Override
     public int onOffsetting(Integer orderId) {
-        String sql = "update t_order_info set `status` =0 where id = ?";
+        String sql = "update t_food_info set `status` =0 where id = ?";
         return executeUpdate(sql,orderId);
     }
 }

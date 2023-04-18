@@ -24,11 +24,11 @@
         <table>
             <tr>
                 <td class="l_td">用户名</td>
-                <td class="r_td"><input type="text" name="userName"></td>
+                <td class="r_td"><input value="xyzhlt" type="text" name="userName"></td>
             </tr>
             <tr>
                 <td class="l_td">密码：</td>
-                <td class="r_td"><input type="password" name="password"></td>
+                <td class="r_td"><input value="123456" type="password" name="password"></td>
             </tr>
         </table>
         <p>还没有账号？<a onclick="register()" href="javascript:void(0)">去注册</a></p>

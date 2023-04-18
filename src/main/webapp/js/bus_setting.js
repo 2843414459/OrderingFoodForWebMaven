@@ -62,7 +62,7 @@ function del(orderId){
     $.ajax({
         url:"/OrderingFoodForWebMaven/onOffsetting.do",
         type:"post",
-        data(){
+        data:{
             orderId:orderId
         },
         dataType:"json",//响应回来的数据格式
