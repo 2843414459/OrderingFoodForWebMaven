@@ -11,7 +11,7 @@ window.onload = () => {
                     url="/OrderingFoodForWebMaven/setting.do";
                     break
                 case 2:
-                    url="/OrderingFoodForWebMaven/setting.do";
+                    url="/OrderingFoodForWebMaven/offSetting.do";
                     break
                 case 3:
                     url="/OrderingFoodForWebMaven/orderComplete.do";
@@ -24,22 +24,7 @@ window.onload = () => {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //获取底部菜单最大的盒子元素
+//获取底部菜单最大的盒子元素
     let tabbar = document.getElementById("tabbar");
     //获取所有的菜单div
     let divs = tabbar.querySelectorAll("div");
@@ -55,7 +40,7 @@ window.onload = () => {
                     url="/OrderingFoodForWebMaven/order.do";
                     break;
                 case 3:
-                    url="/OrderingFoodForWebMaven/pages/business/setting.jsp";
+                    url="/OrderingFoodForWebMaven/setting.do";
                     break;
                 case 4:
                     url="/OrderingFoodForWebMaven/pages/business/about.jsp";

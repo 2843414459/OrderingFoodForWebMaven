@@ -176,11 +176,29 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         //获取订单月销数量
         Integer sum = orderInfoDao.getYueXiao(businessInfo.getId());
 
+
+        //登录商家下已下架菜品数量
+        Integer OffStringNumber = foodInfoDao.selectFoodInfoOff(businessInfo.getId());
+
+
         //商家下所有菜品
         List<FoodInfo> foodInfos = foodInfoDao.selectFoodInfoAll(businessInfo.getId());
+        req.setAttribute("OffStringNumber",OffStringNumber);
         req.setAttribute("foodInfos",foodInfos);
         req.setAttribute("sales",sum);
         req.setAttribute("bus_name",businessInfo.getName());
+        return "/pages/business/setting.jsp";
+    }
+
+    @Override
+    public String OffSetting(HttpServletRequest req) {
+        //当前登录的商家
+        BusinessInfo businessInfo = (BusinessInfo) req.getSession().getAttribute("businessInfo");
+
+        //登录商家下已下架菜的集合
+        List<FoodInfo> OffStringNumberList = foodInfoDao.selectFoodInfoList(businessInfo.getId());
+        req.removeAttribute("foodInfos");
+        req.setAttribute("foodInfos",OffStringNumberList);
         return "/pages/business/setting.jsp";
     }
 }

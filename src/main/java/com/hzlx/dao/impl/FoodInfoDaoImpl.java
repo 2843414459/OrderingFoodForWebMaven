@@ -74,4 +74,23 @@ public class FoodInfoDaoImpl extends BaseDao<FoodInfo> implements FoodInfoDao {
         Long count = (Long) map.get("count");
         return count.intValue();
     }
+
+    @Override
+    public Integer selectFoodInfoOff(Integer id) {
+        String sql = "select count(1) count\n" +
+                "from t_food_info where business_id=? and status = 0";
+        Map<String, Object> map = executeQueryMap(sql, id);
+        if (null==map){
+            return 0;
+        }
+        Long count = (Long) map.get("count");
+        return count.intValue();
+    }
+
+    @Override
+    public List<FoodInfo> selectFoodInfoList(Integer id) {
+        String sql = "select * " +
+                "from t_food_info where business_id=? and status = 0";
+        return executeQuery(sql,FoodInfo.class,id);
+    }
 }

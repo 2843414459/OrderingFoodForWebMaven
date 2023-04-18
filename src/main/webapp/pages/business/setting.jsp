@@ -18,9 +18,9 @@
 <body>
 <div class="title">商品管理</div>
 <div class="body_box">
-    <div class="top_menu">
+    <div class="top_menu" id="setting">
         <div class="active_menu">全部<span>20</span></div>
-        <div>已下架<span>5</span></div>
+        <div>已下架<span>${OffStringNumber}</span></div>
         <div>折扣<span>15</span></div>
         <div>已售罄<span>10</span></div>
         <div class="other_menu">...</div>
@@ -28,7 +28,7 @@
 
 
     <div class="item_box">
-        <div class="item_l" id="setting">
+        <div class="item_l">
             <div>
                 门店福利
             </div>

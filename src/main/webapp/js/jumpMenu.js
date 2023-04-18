@@ -15,7 +15,7 @@ window.onload = () => {
                     url="/OrderingFoodForWebMaven/order.do";
                     break;
                 case 3:
-                    url="/OrderingFoodForWebMaven/pages/business/setting.jsp";
+                    url="/OrderingFoodForWebMaven/setting.do";
                     break;
                 case 4:
                     url="/OrderingFoodForWebMaven/pages/business/about.jsp";

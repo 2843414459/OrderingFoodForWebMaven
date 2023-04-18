@@ -31,4 +31,6 @@ public interface BusinessInfoService {
     String goOrderCompleter(HttpServletRequest req,String status);
 
     String goSetting(HttpServletRequest req);
+
+    String OffSetting(HttpServletRequest req);
 }

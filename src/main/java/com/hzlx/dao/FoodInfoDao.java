@@ -60,4 +60,18 @@ public interface FoodInfoDao {
      * @return
      */
     Integer countFoodInfosByBName(String bName);
+
+    /**
+     * 根据商家id查询商家下以下架商品的数量
+     * @param id
+     * @return
+     */
+    Integer selectFoodInfoOff(Integer id);
+
+    /**
+     * 根据商家id查询下已下架商品的集合
+     * @param id
+     * @return
+     */
+    List<FoodInfo> selectFoodInfoList(Integer id);
 }

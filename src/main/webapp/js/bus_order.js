@@ -1,12 +1,11 @@
 window.onload = () => {
-
 //获取底部菜单最大的盒子元素
     let tabbar = document.getElementById("tabbar");
     //获取所有的菜单div
-    let tabbardivs = tabbar.querySelectorAll("div");
+    let divss = tabbar.querySelectorAll("div");
     // console.log(divs);
-    for (let i = 0; i < tabbardivs.length; i++) {
-        tabbardivs[i].onclick = function () {
+    for (let i = 0; i < divss.length; i++) {
+        divss[i].onclick = function () {
             let url="";
             switch (i + 1) {
                 case 1:
@@ -16,7 +15,7 @@ window.onload = () => {
                     url="/OrderingFoodForWebMaven/order.do";
                     break;
                 case 3:
-                    url="/OrderingFoodForWebMaven/pages/business/setting.jsp";
+                    url="/OrderingFoodForWebMaven/setting.do";
                     break;
                 case 4:
                     url="/OrderingFoodForWebMaven/pages/business/about.jsp";
