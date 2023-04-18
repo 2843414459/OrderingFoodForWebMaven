@@ -68,9 +68,9 @@ function del(orderId){
         dataType:"json",//响应回来的数据格式
         success:function (resp) {
             //成功的回调
-            console.log(resp);
-            let res = JSON.parse(resp);
-            if (res.code == 200) {
+            // console.log(resp);
+            // let res = JSON.parse(resp);
+            if (resp.code == 200) {
                 //页面刷新
                 location.reload();
             }else {
