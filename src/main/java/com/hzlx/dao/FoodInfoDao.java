@@ -74,4 +74,6 @@ public interface FoodInfoDao {
      * @return
      */
     List<FoodInfo> selectFoodInfoList(Integer id);
+
+    int onOffsetting(Integer orderId);
 }

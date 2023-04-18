@@ -33,4 +33,6 @@ public interface BusinessInfoService {
     String goSetting(HttpServletRequest req);
 
     String OffSetting(HttpServletRequest req);
+
+    String onOffsetting(HttpServletRequest req);
 }

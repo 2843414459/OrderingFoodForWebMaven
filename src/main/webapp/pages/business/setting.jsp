@@ -13,6 +13,7 @@
     <style>
         @import url(${ctx}/css/business/setting.css);
     </style>
+    <script src="${ctx}/js/jquery.min.js"></script>
     <script src="${ctx}/js/bus_setting.js"></script>
 </head>
 <body>
@@ -65,7 +66,7 @@
                         <div>
                             <button>促销</button>
                             <button>库存</button>
-                            <button>下架</button>
+                            <button onclick=del(${food.id})>下架</button>
                         </div>
                     </div>
                 </div>

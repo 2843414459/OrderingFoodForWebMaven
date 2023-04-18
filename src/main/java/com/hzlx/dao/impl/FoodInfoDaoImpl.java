@@ -93,4 +93,10 @@ public class FoodInfoDaoImpl extends BaseDao<FoodInfo> implements FoodInfoDao {
                 "from t_food_info where business_id=? and status = 0";
         return executeQuery(sql,FoodInfo.class,id);
     }
+
+    @Override
+    public int onOffsetting(Integer orderId) {
+        String sql = "update t_order_info set `status` =0 where id = ?";
+        return executeUpdate(sql,orderId);
+    }
 }

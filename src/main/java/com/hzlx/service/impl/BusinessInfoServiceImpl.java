@@ -1,5 +1,6 @@
 package com.hzlx.service.impl;
 
+import com.google.gson.Gson;
 import com.hzlx.dao.BusinessInfoDao;
 import com.hzlx.dao.FoodInfoDao;
 import com.hzlx.dao.OrderInfoDao;
@@ -8,6 +9,7 @@ import com.hzlx.dao.impl.FoodInfoDaoImpl;
 import com.hzlx.dao.impl.OrderInfoDaoImpl;
 import com.hzlx.entity.BusinessInfo;
 import com.hzlx.entity.FoodInfo;
+import com.hzlx.entity.RespBean;
 import com.hzlx.service.BusinessInfoService;
 import com.hzlx.utils.MD5Utils;
 
@@ -200,5 +202,23 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         req.removeAttribute("foodInfos");
         req.setAttribute("foodInfos",OffStringNumberList);
         return "/pages/business/setting.jsp";
+    }
+
+    @Override
+    public String onOffsetting(HttpServletRequest req) {
+        RespBean respBean;
+
+        System.out.println(req.getParameter("orderId"));
+        //获取点击的商品id
+        Integer orderId = Integer.parseInt(req.getParameter("orderId"));
+        int num = foodInfoDao.onOffsetting(orderId);
+        if (num>0){
+            respBean =RespBean.success();
+        }else {
+            respBean = RespBean.error(1100,"修改订单状态失败");
+        }
+        Gson gson = new Gson();
+
+        return gson.toJson(respBean);
     }
 }
