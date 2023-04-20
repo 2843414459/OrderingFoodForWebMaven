@@ -199,8 +199,10 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
 
         //登录商家下已下架菜的集合
         List<FoodInfo> OffStringNumberList = foodInfoDao.selectFoodInfoList(businessInfo.getId());
+        Integer OffStringNumber = foodInfoDao.selectFoodInfoOff(businessInfo.getId());
         req.removeAttribute("foodInfos");
         req.setAttribute("foodInfos",OffStringNumberList);
+        req.setAttribute("OffStringNumber",OffStringNumber);
         return "/pages/business/setting.jsp";
     }
 

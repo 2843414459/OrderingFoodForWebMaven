@@ -74,7 +74,7 @@ function del(orderId){
                 //页面刷新
                 location.reload();
             }else {
-                alert(res.message)
+                alert(resp.message)
             }
 
         }, error:function (){
