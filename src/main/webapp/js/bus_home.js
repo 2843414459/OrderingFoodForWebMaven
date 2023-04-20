@@ -7,12 +7,10 @@ function takeOrder(orderId){
         data:{
             orderId:orderId
         },//请求参数
-        // dataType:"json",//响应回来的数据格式
+        dataType:"json",//响应回来的数据格式
         success:function (resp) {
             //成功的回调
-            console.log(resp);
             // let res = JSON.parse(resp);
-            alert(resp.code)
             if (resp.code == 200) {
                 alert("ww")
                 //页面刷新
