@@ -172,20 +172,16 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         return "/pages/business/order.jsp";
     }
 
+
+
     @Override
     public String goSetting(HttpServletRequest req) {
+        settingPublic(req);
         BusinessInfo businessInfo = (BusinessInfo) req.getSession().getAttribute("businessInfo");
         //获取订单月销数量
         Integer sum = orderInfoDao.getYueXiao(businessInfo.getId());
-
-
-        //登录商家下已下架菜品数量
-        Integer OffStringNumber = foodInfoDao.selectFoodInfoOff(businessInfo.getId());
-
-
         //商家下所有菜品
         List<FoodInfo> foodInfos = foodInfoDao.selectFoodInfoAll(businessInfo.getId());
-        req.setAttribute("OffStringNumber",OffStringNumber);
         req.setAttribute("foodInfos",foodInfos);
         req.setAttribute("sales",sum);
         req.setAttribute("bus_name",businessInfo.getName());
@@ -194,22 +190,21 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
 
     @Override
     public String OffSetting(HttpServletRequest req) {
+        settingPublic(req);
         //当前登录的商家
         BusinessInfo businessInfo = (BusinessInfo) req.getSession().getAttribute("businessInfo");
-
         //登录商家下已下架菜的集合
         List<FoodInfo> OffStringNumberList = foodInfoDao.selectFoodInfoList(businessInfo.getId());
-        Integer OffStringNumber = foodInfoDao.selectFoodInfoOff(businessInfo.getId());
         req.removeAttribute("foodInfos");
         req.setAttribute("foodInfos",OffStringNumberList);
-        req.setAttribute("OffStringNumber",OffStringNumber);
+
         return "/pages/business/setting.jsp";
     }
 
     @Override
     public String onOffsetting(HttpServletRequest req) {
+        settingPublic(req);
         RespBean respBean;
-
         System.out.println(req.getParameter("orderId"));
         //获取点击的商品id
         Integer orderId = Integer.parseInt(req.getParameter("orderId"));
@@ -220,7 +215,19 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
             respBean = RespBean.error(1100,"修改订单状态失败");
         }
         Gson gson = new Gson();
-
         return gson.toJson(respBean);
+    }
+
+    @Override
+    public void settingPublic(HttpServletRequest req) {
+        BusinessInfo businessInfo = (BusinessInfo) req.getSession().getAttribute("businessInfo");
+        //登录商家下已下架菜品数量
+        Integer OffStringNumber = foodInfoDao.selectFoodInfoOff(businessInfo.getId());
+        //商家下所有菜品
+        List<FoodInfo> foodInfos = foodInfoDao.selectFoodInfoAll(businessInfo.getId());
+        //商家下菜品数量
+        int size = foodInfos.size();
+        req.setAttribute("size",size);
+        req.setAttribute("OffStringNumber",OffStringNumber);
     }
 }
