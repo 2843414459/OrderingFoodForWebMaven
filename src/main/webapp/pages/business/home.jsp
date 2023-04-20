@@ -17,8 +17,8 @@
         @import url(${ctx}/css/business/home.css);
     </style>
     <script src="${ctx}/js/jquery.min.js"></script>
-    <script src="${ctx}/js/bus_home.js"></script>
-    <script src="${ctx}/js/jumpMenu.js"></script>
+    <script src="${ctx}/js/busJs/bus_home.js"></script>
+    <script src="${ctx}/js/busJs/jumpMenu.js"></script>
 
 </head>
 

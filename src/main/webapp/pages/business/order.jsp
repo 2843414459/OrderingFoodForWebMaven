@@ -15,7 +15,7 @@
     </style>
 <%--    <script src="${ctx}/js/jumpMenu.js"></script>--%>
     <script src="${ctx}/js/jquery.min.js"></script>
-    <script src="${ctx}/js/bus_order.js"></script>
+    <script src="${ctx}/js/busJs/bus_order.js"></script>
 <%--    <script src="${ctx}/js/jumpMenu.js"></script>--%>
 
 

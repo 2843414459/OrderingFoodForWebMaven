@@ -11,7 +11,7 @@
         @import "${url}/css/index.css";
         @import "${url}/css/bus_login.css";
     </style>
-    <script src="${url}/js/bus_login.js"></script>
+    <script src="${url}/js/busJs/bus_login.js"></script>
 </head>
 <body>
 <h1 class="title">吃了喵-商家版</h1>
