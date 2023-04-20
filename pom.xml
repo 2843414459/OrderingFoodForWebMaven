@@ -29,9 +29,7 @@
       <version>1.2</version>
     </dependency>
 
-
     <!-- GSON 依赖 -->
-
     <dependency>
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>

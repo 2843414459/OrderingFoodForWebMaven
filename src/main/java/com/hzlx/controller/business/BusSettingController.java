@@ -1,4 +1,4 @@
-package com.hzlx.controller;
+package com.hzlx.controller.business;
 
 import com.hzlx.service.BusinessInfoService;
 import com.hzlx.service.impl.BusinessInfoServiceImpl;
@@ -12,16 +12,15 @@ import java.io.IOException;
 
 /**
  * OrderingFoodForWebMaven
- * 2023/4/18 15:29
- * 星期二
+ * 2023/4/13 14:55
+ * 星期四
  */
-@WebServlet(urlPatterns = "/onOffsetting.do")
-public class BusOnOffsettingController extends HttpServlet {
+@WebServlet(urlPatterns = "/setting.do")
+public class BusSettingController extends HttpServlet {
     BusinessInfoService service = new BusinessInfoServiceImpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String url = service.onOffsetting(req);
-        resp.getWriter().write(url);
-
+        String url = service.goSetting(req);
+        req.getRequestDispatcher(url).forward(req,resp);
     }
 }
