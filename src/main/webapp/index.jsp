@@ -7,7 +7,7 @@
     <style>
      @import "css/index.css";
     </style>
-    <script src="js/index.js"></script>
+    <script src="js/busJs/index.js"></script>
   </head>
   <body>
   <h1 class="title">吃了喵</h1>

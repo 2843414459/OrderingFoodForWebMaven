@@ -12,7 +12,7 @@
         @import "${url}/css/index.css";
         @import "${url}/css/user_login.css";
     </style>
-    <script src="${url}/js/user_login.js"></script>
+    <script src="${url}/js/busJs/user_login.js"></script>
 </head>
 <body>
 <h1 class="title">吃了喵-商家版</h1>

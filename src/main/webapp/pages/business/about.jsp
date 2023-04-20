@@ -13,7 +13,7 @@
     <style>
         @import url(${ctx}/css/business/about.css);
     </style>
-    <script src="${ctx}/js/jumpMenu.js"></script>
+    <script src="${ctx}/js/busJs/jumpMenu.js"></script>
 </head>
 <body>
     <div class="bgc_box"></div>

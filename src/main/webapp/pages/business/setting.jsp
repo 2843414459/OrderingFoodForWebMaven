@@ -14,7 +14,7 @@
         @import url(${ctx}/css/business/setting.css);
     </style>
     <script src="${ctx}/js/jquery.min.js"></script>
-    <script src="${ctx}/js/bus_setting.js"></script>
+    <script src="${ctx}/js/busJs/bus_setting.js"></script>
 </head>
 <body>
 <div class="title">商品管理</div>
