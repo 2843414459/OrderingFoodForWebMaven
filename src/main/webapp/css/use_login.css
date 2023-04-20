@@ -1,0 +1,38 @@
+body{
+    background-color: #f0e317;
+}
+.login_box{
+    width: 80%;
+    margin: 0 10%;
+    margin-top: -3em;
+}
+.login_box>form{
+    width: 100%;
+}
+form>table{
+    width: 100%;
+}
+.l_td{
+    width: 20%;
+    text-align: right;
+}
+.r_td{
+    width: 75%;
+}
+.r_td>input{
+    width: 90%;
+    height: 2.5em;
+}
+td{
+    height: 3em;
+}
+.sub_btn{
+    width: 70%;
+    height: 2.5em;
+    margin-left: 22%;
+    border: none;
+    border-radius: 1.5em;
+}
+.register{
+    display: none;
+}

@@ -14,7 +14,7 @@
     <script src="${url}/js/bus_login.js"></script>
 </head>
 <body>
-<h1 class="title">吃了喵-商家版<%= request.getContextPath()%></h1>
+<h1 class="title">吃了喵-商家版</h1>
 <img class="logo" src="${url}/images/bus_login.png" alt="">
 
 
