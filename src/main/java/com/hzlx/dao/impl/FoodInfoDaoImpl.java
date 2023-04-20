@@ -99,4 +99,10 @@ public class FoodInfoDaoImpl extends BaseDao<FoodInfo> implements FoodInfoDao {
         String sql = "update t_food_info set `status` =0 where id = ?";
         return executeUpdate(sql,orderId);
     }
+
+    @Override
+    public int onAddsetting(Integer orderId) {
+        String sql = "update t_food_info set `status` =1 where id = ?";
+        return executeUpdate(sql,orderId);
+    }
 }

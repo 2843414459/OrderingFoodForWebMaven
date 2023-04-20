@@ -20,6 +20,7 @@ public class BusSettingOFFController extends HttpServlet {
     BusinessInfoService service = new BusinessInfoServiceImpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setAttribute("status",1);
         String url = service.OffSetting(req);
         req.getRequestDispatcher(url).forward(req,resp);
     }

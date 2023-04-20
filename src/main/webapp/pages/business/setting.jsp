@@ -42,8 +42,6 @@
         </div>
 
         <div class="item_r">
-
-
             <c:forEach var="food" items="${foodInfos}">
                 <div class="item_r_row">
                     <div>
@@ -66,7 +64,8 @@
                         <div>
                             <button>促销</button>
                             <button>库存</button>
-                            <button onclick=del(${food.id})>下架</button>
+                            <button <c:if test="${status==1}">style="display: none;background-color: red" </c:if> onclick=del(${food.id})>下架</button>
+                            <button <c:if test="${status==2}">style="display: none;background-color: green" </c:if> onclick=add(${food.id})>上架</button>
                         </div>
                     </div>
                 </div>

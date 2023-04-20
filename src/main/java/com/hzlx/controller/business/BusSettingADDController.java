@@ -12,16 +12,15 @@ import java.io.IOException;
 
 /**
  * OrderingFoodForWebMaven
- * 2023/4/13 14:55
+ * 2023/4/20 9:16
  * 星期四
  */
-@WebServlet(urlPatterns = "/setting.do")
-public class BusSettingController extends HttpServlet {
+@WebServlet(urlPatterns = "/onAddSetting.do")
+public class BusSettingADDController extends HttpServlet {
     BusinessInfoService service = new BusinessInfoServiceImpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("status",2);
-        String url = service.goSetting(req);
-        req.getRequestDispatcher(url).forward(req,resp);
+        String url = service.AddSrtting(req);
+        resp.getWriter().write(url);
     }
 }
