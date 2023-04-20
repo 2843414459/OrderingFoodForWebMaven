@@ -3,7 +3,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set value="<%=request.getContextPath()%>" var="url" />
-<%@page isELIgnored="false" %>
+<%@page isELIgnored="false" %>9
 <html>
 <head>
     <title>🐱吃了喵点餐平台-用户版</title>
@@ -18,11 +18,11 @@
 <h1 class="title">吃了喵-用户版</h1>
 <img class="logo" src="${url}/images/user.png"/>
 <div class="login_box">
-    <form action="${url}/busLogin.do" method="post">
+    <form action="${url}/userLogin.do" method="post">
         <table>
             <tr>
                 <td class="l_td">用户名</td>
-                <td class="r_td"><input value="xyzhlt" type="text" name="userName"></td>
+                <td class="r_td"><input value="youyou" type="text" name="userName"></td>
             </tr>
             <tr>
                 <td class="l_td">密码：</td>
@@ -34,7 +34,7 @@
     </form>
 </div>
 <div class="register">
-    <form action="${url}/busRegister.do">
+    <form action="${url}/userRegister.do">
         <table>
             <tr>
                 <td class="l_td">昵称：</td>
