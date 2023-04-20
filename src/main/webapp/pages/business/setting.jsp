@@ -20,7 +20,7 @@
 <div class="title">商品管理</div>
 <div class="body_box">
     <div class="top_menu" id="setting">
-        <div class="active_menu">全部<span>20</span></div>
+        <div class="active_menu">全部<span>${size}</span></div>
         <div>已下架<span>${OffStringNumber}</span></div>
         <div>折扣<span>15</span></div>
         <div>已售罄<span>10</span></div>
