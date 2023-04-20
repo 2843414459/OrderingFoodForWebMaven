@@ -1,4 +1,4 @@
-package com.hzlx.controller;
+package com.hzlx.controller.business;
 
 import com.hzlx.service.BusinessInfoService;
 import com.hzlx.service.impl.BusinessInfoServiceImpl;

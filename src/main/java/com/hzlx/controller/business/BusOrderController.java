@@ -1,4 +1,4 @@
-package com.hzlx.controller;
+package com.hzlx.controller.business;
 
 import com.hzlx.service.BusinessInfoService;
 import com.hzlx.service.impl.BusinessInfoServiceImpl;
@@ -12,17 +12,17 @@ import java.io.IOException;
 
 /**
  * OrderingFoodForWebMaven
- * 2023/4/13 9:57
- * 星期四
+ * 2023/4/12 17:07
+ * 星期三
+ * @author
  */
-@WebServlet(urlPatterns = "/orderComplete.do")
-public class BusOrderCompleteController extends HttpServlet {
-    BusinessInfoService service = new BusinessInfoServiceImpl();
+@WebServlet(urlPatterns = "/order.do")
+public class BusOrderController extends HttpServlet {
+    private BusinessInfoService service = new BusinessInfoServiceImpl();
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setHeader("Content-Type","text/html; charset = UTF-8");
-        String url = service.goOrderCompleter(req,"=1");
-        req.setAttribute("status","2");
+        String url = service.goOrder(req);
+        req.setAttribute("status","0");
         req.getRequestDispatcher(url).forward(req,resp);
     }
 }

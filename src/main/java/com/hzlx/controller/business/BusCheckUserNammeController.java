@@ -1,4 +1,4 @@
-package com.hzlx.controller;
+package com.hzlx.controller.business;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
