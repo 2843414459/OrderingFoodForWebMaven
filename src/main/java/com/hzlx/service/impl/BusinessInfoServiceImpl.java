@@ -230,4 +230,21 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         req.setAttribute("size",size);
         req.setAttribute("OffStringNumber",OffStringNumber);
     }
+
+    @Override
+    public String AddSrtting(HttpServletRequest req) {
+        settingPublic(req);
+        RespBean respBean;
+        System.out.println(req.getParameter("orderId"));
+        //获取点击的商品id
+        Integer orderId = Integer.parseInt(req.getParameter("orderId"));
+        int num = foodInfoDao.onAddsetting(orderId);
+        if (num>0){
+            respBean =RespBean.success();
+        }else {
+            respBean = RespBean.error(1100,"修改订单状态失败");
+        }
+        Gson gson = new Gson();
+        return gson.toJson(respBean);
+    }
 }

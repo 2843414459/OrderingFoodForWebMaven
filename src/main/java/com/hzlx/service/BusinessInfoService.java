@@ -37,4 +37,6 @@ public interface BusinessInfoService {
     String onOffsetting(HttpServletRequest req);
 
     void settingPublic(HttpServletRequest req);
+
+    String AddSrtting(HttpServletRequest req);
 }
