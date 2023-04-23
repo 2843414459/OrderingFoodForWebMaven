@@ -37,12 +37,11 @@ public class ConnectionPool {
 //        userName = propertiesUtil.getPropertyForKey("userName");
 //        password = propertiesUtil.getPropertyForKey("password");
 //        driver = propertiesUtil.getPropertyForKey("driver");
-        url = "jdbc:mysql://localhost:3306/oderingfood?useSSl=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai";
+        url = "jdbc:mysql://192.168.43.45:3306/oderingfood?useSSl=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai";
         userName = "root";
         password = "root";
         driver = "com.mysql.cj.jdbc.Driver";
         initConnection();
-
     }
 
     //初始化链接池
