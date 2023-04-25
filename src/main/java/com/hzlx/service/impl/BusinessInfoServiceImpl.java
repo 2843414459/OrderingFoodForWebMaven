@@ -10,6 +10,7 @@ import com.hzlx.dao.impl.OrderInfoDaoImpl;
 import com.hzlx.entity.BusinessInfo;
 import com.hzlx.entity.FoodInfo;
 import com.hzlx.entity.RespBean;
+import com.hzlx.mapper.BusinessInfoMapper;
 import com.hzlx.service.BusinessInfoService;
 import com.hzlx.utils.MD5Utils;
 
@@ -34,7 +35,11 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
 
     private OrderInfoDao orderInfoDao = new OrderInfoDaoImpl();
 
+    BusinessInfoMapper mapper;
+
     private FoodInfoDao foodInfoDao = new FoodInfoDaoImpl();
+
+
 
 
     /**
@@ -53,10 +58,12 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         //密码加密
 //        String pwdSalt = MD5Utils.encryptMD5AndSalt(MD5Utils.encryptMD5(pwd), "吃了喵");
         //调用service中的登录方法
-        BusinessInfo businessInfo = businessInfoDao.selectBusinessInfoByUserNameAndPwd(userName, pwd);
+
+
+        BusinessInfo businessInfo = mapper.selectBusinessInfoByUserNameAndPwd(userName, pwd);
+//        BusinessInfo businessInfo = businessInfoDao.selectBusinessInfoByUserNameAndPwd(userName, pwd);
         if (null!=businessInfo){
 //            request.setAttribute("bName",businessInfo.getName());
-
             //把登录成功的商家信息方法session作用域中
             request.getSession().setAttribute("businessInfo",businessInfo);
             //登录成功妆发到home对应的servlet去台哦转红么.jsp

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--properties 引入外部的properties文件-->
+    <properties resource="jdbc.properties"> </properties>
+    <!--配置Mybatis的日志实现 采用log4j-->
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <!-- 别名映射-->
+    <typeAliases>
+        <package name="com.hzlx.entity"/>
+    </typeAliases>
+
+    <!--配置数据源 -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.userName}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--Mybatis的映射配置-->
+    <mappers>
+        <!--        <mapper resource="com/hzlx/mapper/BusinessInfoMapper.xml"/>-->
+<!--                <mapper class="com.hzlx.mapper.BusinessInfoMapper"/>-->
+        <package name="com.hzlx.mapper"/>
+    </mappers>
+</configuration>
