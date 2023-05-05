@@ -1,18 +1,16 @@
 package com.hzlx.service.impl;
 
 import com.google.gson.Gson;
-import com.hzlx.dao.BusinessInfoDao;
-import com.hzlx.dao.FoodInfoDao;
-import com.hzlx.dao.OrderInfoDao;
-import com.hzlx.dao.impl.BusinessInfoDaoImpl;
-import com.hzlx.dao.impl.FoodInfoDaoImpl;
-import com.hzlx.dao.impl.OrderInfoDaoImpl;
 import com.hzlx.entity.BusinessInfo;
 import com.hzlx.entity.FoodInfo;
 import com.hzlx.entity.RespBean;
 import com.hzlx.mapper.BusinessInfoMapper;
+import com.hzlx.mapper.FoodInfoMapper;
+import com.hzlx.mapper.OrderInfoMapper;
 import com.hzlx.service.BusinessInfoService;
 import com.hzlx.utils.MD5Utils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,16 +29,24 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
     /**DAO层
      *
      */
-    private BusinessInfoDao businessInfoDao = new BusinessInfoDaoImpl();
 
-    private OrderInfoDao orderInfoDao = new OrderInfoDaoImpl();
+    private BusinessInfoMapper businessInfoMapper;
 
-    BusinessInfoMapper mapper;
+    public void setBusinessInfoMapper(BusinessInfoMapper businessInfoMapper) {
+        this.businessInfoMapper = businessInfoMapper;
+    }
 
-    private FoodInfoDao foodInfoDao = new FoodInfoDaoImpl();
+    private OrderInfoMapper orderInfoDao;
 
+    public void setOrderInfoDao(OrderInfoMapper orderInfoDao) {
+        this.orderInfoDao = orderInfoDao;
+    }
 
+    private FoodInfoMapper foodInfoDao;
 
+    public void setFoodInfoDao(FoodInfoMapper foodInfoDao) {
+        this.foodInfoDao = foodInfoDao;
+    }
 
     /**
      * 登录
@@ -54,13 +60,13 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         response.setHeader("Content-Type","text/html; charset = UTF-8");
         //获取请求中的数据
         String userName=request.getParameter("userName");
-        String pwd = request.getParameter("password");
+        String password = request.getParameter("password");
         //密码加密
 //        String pwdSalt = MD5Utils.encryptMD5AndSalt(MD5Utils.encryptMD5(pwd), "吃了喵");
         //调用service中的登录方法
 
 
-        BusinessInfo businessInfo = mapper.selectBusinessInfoByUserNameAndPwd(userName, pwd);
+        BusinessInfo businessInfo = businessInfoMapper.selectBusinessInfoByUserNameAndPwd(userName, password);
 //        BusinessInfo businessInfo = businessInfoDao.selectBusinessInfoByUserNameAndPwd(userName, pwd);
         if (null!=businessInfo){
 //            request.setAttribute("bName",businessInfo.getName());
@@ -79,7 +85,7 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         //处理pwd 加密
         String pwdSalt = MD5Utils.encryptMD5AndSalt(MD5Utils.encryptMD5(pwd), "吃了喵");
         //DAO根据用户名和密码查询商家对象 ，如果数据库里有，则返回对应的对象，如果没有则返回null
-        BusinessInfo businessInfo = businessInfoDao.selectBusinessInfoByUserNameAndPwd(userName, pwdSalt);
+        BusinessInfo businessInfo = businessInfoMapper.selectBusinessInfoByUserNameAndPwd(userName, pwdSalt);
         return businessInfo;
     }
 
@@ -97,7 +103,7 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         businessInfo.setPassword(passWord);
         businessInfo.setAddress(address);
         businessInfo.setTel(tel);
-        if (businessInfoDao.insert(businessInfo)>0) {
+        if (businessInfoMapper.insert(businessInfo)>0) {
             return "/pages/business/login.jsp";
         }else {
             response.setStatus(505);
@@ -118,7 +124,7 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
             return -1;
         }
         //根据用户名查询数据库，看是否重复的 如果有 返回查到的那个数字
-        return  businessInfoDao.countBusinessInfoByUserName(userName);
+        return  businessInfoMapper.countBusinessInfoByUserName(userName);
     }
 
 
@@ -186,7 +192,7 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
         settingPublic(req);
         BusinessInfo businessInfo = (BusinessInfo) req.getSession().getAttribute("businessInfo");
         //获取订单月销数量
-        Integer sum = orderInfoDao.getYueXiao(businessInfo.getId());
+        Integer sum = Math.toIntExact(orderInfoDao.getYueXiao(businessInfo.getId()));
         //商家下所有菜品
         List<FoodInfo> foodInfos = foodInfoDao.selectFoodInfoAll(businessInfo.getId());
         req.setAttribute("foodInfos",foodInfos);
@@ -229,7 +235,7 @@ public class BusinessInfoServiceImpl implements BusinessInfoService {
     public void settingPublic(HttpServletRequest req) {
         BusinessInfo businessInfo = (BusinessInfo) req.getSession().getAttribute("businessInfo");
         //登录商家下已下架菜品数量
-        Integer OffStringNumber = foodInfoDao.selectFoodInfoOff(businessInfo.getId());
+        Integer OffStringNumber = Math.toIntExact(foodInfoDao.selectFoodInfoOff(businessInfo.getId()));
         //商家下所有菜品
         List<FoodInfo> foodInfos = foodInfoDao.selectFoodInfoAll(businessInfo.getId());
         //商家下菜品数量

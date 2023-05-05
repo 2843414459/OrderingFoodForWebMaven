@@ -1,14 +1,15 @@
-package com.hzlx.dao;
+package com.hzlx.mapper;
 
 
 
 import com.hzlx.entity.FoodInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-public interface FoodInfoDao {
+public interface FoodInfoMapper {
     /**
      * 根据businessId查询商家下所有的菜
      * @param businessId 商家ID
@@ -23,7 +24,7 @@ public interface FoodInfoDao {
      * @param price 菜品单价
      * @return 受影响行数
      */
-    int insertFoodInfo(Integer businessId, String name, BigDecimal price);
+    int insertFoodInfo(@Param("businessId") Integer businessId,@Param("name") String name,@Param("price") BigDecimal price);
 
     /**
      * 修改菜品信息
@@ -37,7 +38,7 @@ public interface FoodInfoDao {
      * @param id
      * @return
      */
-    int updateFoodInfoSoldOut(Integer id,Integer newMent);
+    int updateFoodInfoSoldOut(@Param("id") Integer id,@Param("newMent") Integer newMent);
 
     /**
      * 根据ID删除指定的菜品
@@ -52,7 +53,7 @@ public interface FoodInfoDao {
      * @param bName 根据名字
      * @return
      */
-    List<Map<String , Object>> getFoodInfos(String bName,Integer pageIndex,Integer pageSize);
+    List<Map<String , Object>> getFoodInfos(@Param("bName") String bName,@Param("pageIndex") Integer pageIndex,@Param("pageSize") Integer pageSize);
 
     /**
      * 根据商家名字模糊查询所有总数
@@ -66,7 +67,7 @@ public interface FoodInfoDao {
      * @param id
      * @return
      */
-    Integer selectFoodInfoOff(Integer id);
+    Long selectFoodInfoOff(Integer id);
 
     /**
      * 根据商家id查询下已下架商品的集合

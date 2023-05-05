@@ -2,6 +2,8 @@ package com.hzlx.controller.business;
 
 import com.hzlx.service.BusinessInfoService;
 import com.hzlx.service.impl.BusinessInfoServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +21,14 @@ import java.io.IOException;
  */
 @WebServlet(urlPatterns = "/busLogin.do")
 public class BusLoginController extends HttpServlet{
-    private BusinessInfoService businessInfoService = new BusinessInfoServiceImpl();
+    private BusinessInfoService businessInfoService;
+
+    @Override
+    public void init() throws ServletException {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        businessInfoService = applicationContext.getBean("businessInfoService", BusinessInfoServiceImpl.class);
+    }
+
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         /*req.setCharacterEncoding("UTF-8");

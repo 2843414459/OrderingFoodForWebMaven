@@ -13,7 +13,14 @@
         <result column="job_type" property="jobType"></result>
         <result column="status" property="status"></result>
     </resultMap>
-    <select id="selectBusinessInfoByUserNameAndPwd" resultType="com.hzlx.entity.BusinessInfo">
-        select * from t_business_info where user_name=? and `password`=#{id}
+    <insert id="insert"></insert>
+    <update id="updateBusinessInfo"></update>
+    <update id="updateBusinessInfoForJobType"></update>
+    <update id="updateBusinessInfoForPwd"></update>
+    <delete id="deleteByPrimaryKey"></delete>
+    <select id="selectBusinessInfoByUserNameAndPwd" resultMap="result">
+        select * from t_business_info where user_name=#{userName} and `password`=#{password}
     </select>
+    <select id="selectByPrimaryKey" resultType="com.hzlx.entity.BusinessInfo"></select>
+    <select id="countBusinessInfoByUserName" resultType="java.lang.Integer"></select>
 </mapper>
